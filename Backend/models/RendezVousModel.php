@@ -13,13 +13,16 @@ class RendezVousModel {
     }
 
     public function add($data) {
-        $sql = "INSERT INTO rendezvous (id_medecin, id_patient, date_rdv)
-                VALUES (?, ?, ?)";
+        $sql = "INSERT INTO rendezvous (idMed, idPat, DateRdv, heureRdv, salleRdv, etatRdv)
+                VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);
         return $stmt->execute([
-            $data['id_medecin'],
-            $data['id_patient'],
-            $data['date_rdv']
+            $data['idMed'],
+            $data['idPat'],
+            $data['DateRdv'],
+            $data['heureRdv'],
+            $data['salleRdv'],
+            0
         ]);
     }
 
